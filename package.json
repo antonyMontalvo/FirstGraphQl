@@ -1,0 +1,30 @@
+{
+  "name": "FirstGraphQL",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.4.6",
+    "apollo-server-express": "^2.4.6",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
+    "express-validator": "^5.3.1",
+    "graphql": "^14.1.1",
+    "graphql-tools": "^4.0.4",
+    "merge-graphql-schemas": "^1.5.8",
+    "mongoose": "^5.4.14",
+    "morgan": "^1.9.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "nodemon": "^1.18.10"
+  }
+}
