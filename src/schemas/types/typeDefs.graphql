@@ -1,0 +1,10 @@
+# ./graphql/types/clientType.graphql 
+type Employee {
+  _id: String
+  name: String
+  "Posicion laboral que ocupa"
+  position: String
+  "Lugar donde se encuentra la oficina"
+  office: String
+  salary: Int
+}

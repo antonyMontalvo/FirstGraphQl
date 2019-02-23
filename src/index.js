@@ -1,20 +1,17 @@
 // dependences
 const morgan = require("morgan"),
-    path = require("path"),
-    cors = require("cors"),
-    express = require("express"),
-    { ApolloServer } = require('apollo-server-express'),
-    resolvers = require('./graphql/models'),
-    { mongoose } = require('./models/database'),
-    expressGraphQL = require("express-graphql"),
-    schema = require("./graphql/graphql");
-    const typeDefs = require("./graphql/types");
-// resolvers = require("./controllers/employeeController");
+  path = require("path"),
+  cors = require("cors"),
+  express = require("express"),
+  { mongoose } = require("./models/database"),
+  { ApolloServer } = require("apollo-server-express"),
+  app = express();
 
-//////////////////////////////
+const resolvers = require("./graphql/resolvers"),
+  typeDefs = require("./graphql/index"),
+  mocks = require("./graphql/mocks"),
+  server = new ApolloServer({ typeDefs, resolvers, mocks });
 
-const app = express();
-server = new ApolloServer({ typeDefs, resolvers });
 // settings
 app.set("port", process.env.PORT || 3000);
 
@@ -27,19 +24,18 @@ server.applyMiddleware({ app });
 
 // global variables
 app.use((req, res, next) => {
-    next();
+  next();
 });
 
 // static files
 app.use(express.static(path.join(__dirname + "/public")));
 
-// routes
-app.use('/api/employees', require('./routes/employeeRoutes'));
 // start server
-
-if (process.env.NODE_ENV === 'development') {
-    app.listen(app.get("port"), () => {
-        console.log("Server on port ", app.get("port"));
-        console.log(`Server graph ready at http://localhost:3000${server.graphqlPath}`);
-    });
+if (process.env.NODE_ENV === "development") {
+  app.listen(app.get("port"), () => {
+    console.log("Server on port ", app.get("port"));
+    console.log(
+      `Server graph ready at http://localhost:3000${server.graphqlPath}`
+    );
+  });
 }

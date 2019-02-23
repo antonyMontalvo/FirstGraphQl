@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development nodemon src/index.js"
+    "start": "cross-env NODE_ENV=development nodemon src/index.js",
+    "start_express": "cross-env NODE_ENV=development nodemon src/index_express.js",
+    "start_apollo": "cross-env NODE_ENV=development nodemon src/index_apollo.js"
   },
   "keywords": [],
   "author": "",

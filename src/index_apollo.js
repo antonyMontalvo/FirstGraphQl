@@ -1,34 +1,42 @@
-const express = require('express');
-// const { ApolloServer, gql } = require('apollo-server');
-const { ApolloServer, gql } = require('apollo-server-express');
+const morgan = require("morgan"),
+  path = require("path"),
+  cors = require("cors"),
+  express = require("express"),
+  { mongoose } = require("./models/database"),
+  { ApolloServer } = require("apollo-server-express"),
+  app = express();
 
+const resolvers = require("./graphql/resolvers"),
+  typeDefs = require("./graphql/index"),
+  mocks = require("./graphql/mocks"),
+  server = new ApolloServer({ typeDefs, resolvers, mocks });
 
-const PORT = 4000;
+// settings
+app.set("port", process.env.PORT || 4000);
 
-const app = express();
-
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
-
-const resolvers = {
-  Query: {
-    hello: () => 'Hello world!'
-  },
-};
-
-const server = new ApolloServer({ typeDefs, resolvers });
-// For development
+// middlewares
+app.use(morgan("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 server.applyMiddleware({ app });
 
-app.listen({ port: PORT }, () =>
-  console.log(`Server with express ready at http://localhost:4000${server.graphqlPath}`)
-)
-// For production
-// server.listen().then(({url}) => {
-//     console.log(`Server graphql ready at ${url}`);
-// })
+// global variables
+app.use((req, res, next) => {
+  next();
+});
 
-// Funciona con la api de apollo v2
+// static files
+app.use(express.static(path.join(__dirname + "/public")));
+
+// start server
+if (process.env.NODE_ENV === "development") {
+  app.listen(app.get("port"), () => {
+    console.log("Server on port ", app.get("port"));
+    console.log(
+      `Server graph ready at http://localhost:${app.get("port")}${
+        server.graphqlPath
+      }`
+    );
+  });
+}
