@@ -8,6 +8,15 @@ type Employee {
 }
 
 type Query {
-    employees: [Employee],
-    employee(name: String): Employee #Busco por nombre ya que id en mongodb es distinto OBjectId()
+  employees: [Employee]
+  employee(name: String): Employee #Busco por nombre ya que id en mongodb es distinto OBjectId()
+}
+
+type Mutation {
+  addEmployee(
+    name: String
+    position: String
+    office: String
+    salary: Int
+  ): Employee
 }
