@@ -1,16 +1,8 @@
-const Employee = require("../models/employee");
+const { mergeResolvers } = require("merge-graphql-schemas");
 
-module.exports = {
-  // resolvers: {
-  Query: {
-    clients: () => {},
-    client: () => {}
-  },
-  Mutation: {
-    addClient: () => {}
-  },
-  Client: {
-    products: () => {}
-  }
-  // },
-};
+const clientResolver = require("./resolvers/clientResolver"),
+  employeeResolver = require("./resolvers/employeeResolver");
+
+const resolvers = [clientResolver, employeeResolver];
+
+module.exports = mergeResolvers(resolvers);

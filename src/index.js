@@ -10,7 +10,7 @@ const morgan = require("morgan"),
 const resolvers = require("./graphql/resolvers"),
   typeDefs = require("./graphql/typeDefs"),
   mocks = require("./graphql/mocks"),
-  server = new ApolloServer({ typeDefs, resolvers, mocks });
+  server = new ApolloServer({ typeDefs, resolvers });
 
 // settings
 app.set("port", process.env.PORT || 3000);

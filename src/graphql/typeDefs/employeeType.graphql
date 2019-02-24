@@ -1,0 +1,13 @@
+# ./graphql/types/employeeType.graphql
+type Employee {
+  _id: String
+  name: String
+  position: String
+  office: String
+  salary: Int
+}
+
+type Query {
+    employees: [Employee]
+    employee(_id: ID!): Employee
+}
