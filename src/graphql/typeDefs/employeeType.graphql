@@ -8,6 +8,6 @@ type Employee {
 }
 
 type Query {
-    employees: [Employee]
-    employee(_id: ID!): Employee
+    employees: [Employee],
+    employee(name: String): Employee #Busco por nombre ya que id en mongodb es distinto OBjectId()
 }

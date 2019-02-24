@@ -2,15 +2,11 @@ const Employee = require("../../models/employee");
 
 module.exports = {
   Query: {
-    employees: () => {
-      return new Promise((resolve, reject) => {
-        Employee.find({})
-          .populate()
-          .exec((err, res) => {
-            err ? reject(err) : resolve(res);
-          });
-      });
+    employees: async () => {
+      return await Employee.find({});
     },
-    employee: _id => {}
+    async employee(root, args) {
+      return await Employee.findOne(args);
+    }
   }
 };
