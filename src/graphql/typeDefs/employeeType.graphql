@@ -9,7 +9,7 @@ type Employee {
 
 type Query {
   employees: [Employee]
-  employee(name: String): Employee #Busco por nombre ya que id en mongodb es distinto OBjectId()
+  employee(_id: String!): Employee #Busco por nombre ya que id en mongodb es distinto OBjectId()
 }
 
 type Mutation {
@@ -19,4 +19,14 @@ type Mutation {
     office: String
     salary: Int
   ): Employee
+  updateEmployee(
+    _id: String!
+    name: String
+    position: String
+    office: String
+    salary: Int
+  ): Employee
+  deleteEmployee(
+    _id: String!
+  ): String
 }

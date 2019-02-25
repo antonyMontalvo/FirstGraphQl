@@ -1,0 +1,89 @@
+# employees
+query {
+  employees {
+    _id
+    name
+    position
+    office
+    salary
+  }
+}
+##
+
+#employee
+query($_id: String!) {
+  employee(_id: $_id) {
+    _id
+    name
+    position
+    office
+    salary
+  }
+}
+#variables
+{
+  "_id": "5c70d95b687d7a110c8d2183"
+}
+##
+
+#addEmployee
+mutation ($name: String, $position: String, $office: String, $salary: Int) {
+  addEmployee(
+    name: $name
+    position: $position
+    office: $office
+    salary: $salary
+  ) {
+    _id
+    name
+    position
+    office
+    salary
+  }
+}
+#variables
+{
+  "name": "String",
+  "position": "String",
+  "office": "String",
+  "salary": 5000
+}
+##
+
+#updateEmployee
+mutation(
+  $_id: String!
+  $name: String
+  $position: String
+  $office: String
+  $salary: Int
+) {
+  updateEmployee(
+    _id: $_id
+    name: $name
+    position: $position
+    office: $office
+    salary: $salary
+  ) {
+    _id
+    name
+  }
+}
+#variables
+{
+  "_id": "5c70d95a687d7a110c8d2182",
+  "name": "String",
+  "position": "String",
+  "office": "String",
+  "salary": 5000
+}
+##
+
+#deleteEmployee
+mutation($_id: String!){
+  deleteEmployee(_id: $_id)
+}
+#variables
+{
+  "_id": "5c70d95a687d7a110c8d2182"
+}
