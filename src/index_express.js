@@ -9,7 +9,7 @@ const morgan = require("morgan"),
   app = express();
 
 const resolvers = require("./graphql/resolvers"),
-  typeDefs = require("./graphql/index"),
+  typeDefs = require("./graphql/typeDefs"),
   mocks = require("./graphql/mocks");
 
 // settings

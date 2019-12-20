@@ -7,7 +7,7 @@ const morgan = require("morgan"),
   app = express();
 
 const resolvers = require("./graphql/resolvers"),
-  typeDefs = require("./graphql/index"),
+  typeDefs = require("./graphql/typeDefs"),
   mocks = require("./graphql/mocks"),
   server = new ApolloServer({ typeDefs, resolvers, mocks });
 
@@ -33,10 +33,7 @@ app.use(express.static(path.join(__dirname + "/public")));
 if (process.env.NODE_ENV === "development") {
   app.listen(app.get("port"), () => {
     console.log("Server on port ", app.get("port"));
-    console.log(
-      `Server graph ready at http://localhost:${app.get("port")}${
-        server.graphqlPath
-      }`
+    console.log(`Server graph ready at http://localhost:${app.get("port")}${server.graphqlPath}`
     );
   });
 }
