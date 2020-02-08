@@ -23,7 +23,6 @@
     "morgan": "^1.9.1"
   },
   "devDependencies": {
-    "cross-env": "^5.2.0",
-    "nodemon": "^1.18.10"
+    "cross-env": "^5.2.0"
   }
 }

@@ -1,0 +1,18 @@
+version: "0.0"
+
+services: 
+  backapp:
+    image: first-graphql
+    environment: 
+      MONGODB_URI: mongodb://localhost/training-dev
+      PORT: 3000
+      HOST: localhost
+      TOKEN: 123456789
+
+    depends_on: 
+      - training_db
+    ports: 
+      - "3000:3000"
+    
+  training_db:
+    image: mongo
