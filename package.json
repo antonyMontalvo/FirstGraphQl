@@ -4,8 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development node src/app.js",
-    "dev": "cross-env NODE_ENV=development nodemon src/app.js"
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "deploy-prod": "gcloud app deploy app.yaml",
+    "deploy-dev": "gcloud app deploy app.dev.yaml -v 20200208t202952"
   },
   "keywords": [],
   "author": "",
@@ -22,7 +24,5 @@
     "mongoose": "^5.8.11",
     "morgan": "^1.9.1"
   },
-  "devDependencies": {
-    "cross-env": "^5.2.0"
-  }
+  "devDependencies": {}
 }

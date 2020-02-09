@@ -4,10 +4,10 @@ services:
   backapp:
     image: first-graphql
     environment: 
-      MONGODB_URI: mongodb://localhost/training-dev
+      MONGODB_URI: mongodb+srv://antonis162010:7v6QzvIqmarzfEx1@cluster0-e8afc.mongodb.net/training-dev?retryWrites=true&w=majority
       PORT: 3000
       HOST: localhost
-      TOKEN: 123456789
+      TOKEN: 123456789a
 
     depends_on: 
       - training_db

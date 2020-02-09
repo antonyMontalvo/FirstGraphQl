@@ -39,8 +39,6 @@ app.use(express.static(path.join(__dirname + "/public")));
 app.listen(app.get("port"), () => {
   if (process.env.NODE_ENV === "development")
     console.log(
-      `Server graph ready at http://${app.get("host")}:${app.get("port")}${
-        server.graphqlPath
-      }`
+      `Server graph ready at http://${app.get("host")}:${app.get("port")}${server.graphqlPath}`
     );
 });
