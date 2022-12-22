@@ -19,7 +19,7 @@
     "express": "^4.16.4",
     "express-validator": "^5.3.1",
     "graphql": "^14.6.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "merge-graphql-schemas": "^1.7.6",
     "mongoose": "^5.8.11",
     "morgan": "^1.9.1"
